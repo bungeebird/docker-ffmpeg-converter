@@ -2,7 +2,6 @@
 	"name": "docker-ffmpeg-converter",
 	"version": "1.0.0",
 	"description": "Docker image that watches a directory, converts files and outputs them to another directory",
-	"type": "module",
 	"main": "src/index.ts",
 	"scripts": {
 		"dev": "tsx src/startService.ts",

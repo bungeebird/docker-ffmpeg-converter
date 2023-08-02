@@ -1,9 +1,8 @@
 {
 	"compilerOptions": {
 		"outDir": "./build",
-		"module": "ESNext",
+		"module": "CommonJS",
 		"target": "ESNext",
-		"moduleResolution": "node",
 		"esModuleInterop": true,
 		"rootDir": "src",
 		"forceConsistentCasingInFileNames": true,

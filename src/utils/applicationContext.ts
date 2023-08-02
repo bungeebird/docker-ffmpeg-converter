@@ -27,6 +27,7 @@ export class ApplicationContext {
 			this.rootLogger.child({ name: "ConverterService" }),
 			this.fileWatcherService,
 			this.ffmpegService,
+			this.configuration.config.REMOVE_SOURCE_AFTER_CONVERT,
 		);
 	}
 }
