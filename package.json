@@ -1,68 +1,70 @@
 {
-  "name": "docker-ffmpeg-converter",
-  "version": "1.0.0",
-  "description": "Docker image that watches a directory, converts files and outputs them to another directory",
-  "type": "module",
-  "main": "src/index.ts",
-  "scripts": {
-    "dev": "tsx src/index.ts",
-    "build": "wireit",
-    "format": "wireit",
-    "ci": "wireit",
-    "dependency-update": "npm-check-updates -u --filterVersion \"/^[~^<>]| - |\\.x$/\" --deep && npm i",
-    "prepare": "husky install"
-  },
-  "wireit": {
-    "build": {
-      "command": "tsc"
-    },
-    "lint:check": {
-      "command": "rome check ."
-    },
-    "lint:fix": {
-      "command": "rome check --apply ."
-    },
-    "format:check": {
-      "command": "rome format ."
-    },
-    "format:fix": {
-      "command": "rome format --write ."
-    },
-    "format": {
-      "dependencies": [
-        "format:fix",
-        "lint:fix"
-      ]
-    },
-    "ci": {
-      "dependencies": [
-        "lint:check",
-        "format:check",
-        "build"
-      ]
-    }
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "lint-staged": {
-    "*.ts": "rome check --apply",
-    "*.{ts,json,yml,yaml,html,md}": "rome format --write"
-  },
-  "devDependencies": {
-    "@types/node": "18.x",
-    "esbuild": "^0.18.17",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "npm-check-updates": "^16.10.17",
-    "rome": "12.1.3",
-    "tsx": "^3.12.7",
-    "typescript": "^5.1.6",
-    "wireit": "^0.10.0"
-  },
-  "dependencies": {
-    "ffmpeg-static": "^5.1.0",
-    "zod": "^3.21.4",
-    "zx": "^7.2.3"
-  }
+	"name": "docker-ffmpeg-converter",
+	"version": "1.0.0",
+	"description": "Docker image that watches a directory, converts files and outputs them to another directory",
+	"type": "module",
+	"main": "src/index.ts",
+	"scripts": {
+		"dev": "tsx src/startService.ts",
+		"build": "wireit",
+		"bundle": "wireit",
+		"format": "wireit",
+		"ci": "wireit",
+		"dependency-update": "npm-check-updates -u --filterVersion \"/^[~^<>]| - |\\.x$/\" --deep && npm i",
+		"prepare": "husky install"
+	},
+	"wireit": {
+		"build": {
+			"command": "tsc"
+		},
+		"bundle": {
+			"command": "esbuild build/startService.js --bundle --platform=node --target=node18 --outdir=./build/bundle",
+			"dependencies": ["build"]
+		},
+		"lint:check": {
+			"command": "rome check ."
+		},
+		"lint:fix": {
+			"command": "rome check --apply-unsafe ."
+		},
+		"format:check": {
+			"command": "rome format ."
+		},
+		"format:fix": {
+			"command": "rome format --write ."
+		},
+		"format": {
+			"dependencies": ["format:fix", "lint:fix"]
+		},
+		"ci": {
+			"dependencies": ["lint:check", "format:check", "build"]
+		}
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"lint-staged": {
+		"*.ts": "rome check --apply-unsafe",
+		"*.{ts,json,yml,yaml,html,md}": "rome format --write"
+	},
+	"devDependencies": {
+		"@types/node": "18.x",
+		"esbuild": "^0.18.17",
+		"ffmpeg-static": "^5.1.0",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.3",
+		"npm-check-updates": "^16.10.17",
+		"rome": "12.1.3",
+		"tsx": "^3.12.7",
+		"typescript": "^5.1.6",
+		"wireit": "^0.10.0"
+	},
+	"dependencies": {
+		"dotenv": "^16.3.1",
+		"execa": "^7.2.0",
+		"winston": "^3.10.0",
+		"winston-daily-rotate-file": "^4.7.1",
+		"zod": "^3.21.4",
+		"zx": "^7.2.3"
+	}
 }

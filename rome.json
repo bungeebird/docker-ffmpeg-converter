@@ -3,10 +3,16 @@
 	"organizeImports": {
 		"enabled": true
 	},
+	"formatter": {
+		"lineWidth": 120
+	},
 	"linter": {
 		"enabled": true,
 		"rules": {
 			"recommended": true
 		}
+	},
+	"files": {
+		"ignore": ["./build", "./data", "./node_modules"]
 	}
 }
