@@ -13,6 +13,6 @@
 		}
 	},
 	"files": {
-		"ignore": ["./build", "./data", "./node_modules"]
+		"ignore": ["./build", "./data", "./node_modules", ".github"]
 	}
 }
