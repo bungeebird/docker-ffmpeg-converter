@@ -28,6 +28,7 @@ export class ApplicationContext {
 			this.fileWatcherService,
 			this.ffmpegService,
 			this.configuration.config.REMOVE_SOURCE_AFTER_CONVERT,
+			this.configuration.config.VERSION,
 		);
 	}
 }

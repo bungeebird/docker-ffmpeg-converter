@@ -4,6 +4,7 @@ config();
 import { z } from "zod";
 
 const environmentVariables = z.object({
+	VERSION: z.string().default("develop"),
 	GLOB_PATTERNS: z.string().transform((s) => s.split(",")),
 	SCAN_INTERVAL: z
 		.string()

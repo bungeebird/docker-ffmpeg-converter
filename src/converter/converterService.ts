@@ -9,12 +9,13 @@ export class ConverterService {
 		private fileWatcherService: FileWatcherService,
 		private ffmpegService: FFMPEGService,
 		private removeSourceFileAfterConvert: boolean,
+		private version: string,
 	) {
 		this.fileWatcherService.onNewFile(this.onNewFile);
 	}
 
 	start = () => {
-		this.logger.info("Starting converter service");
+		this.logger.info("Starting converter service", { version: this.version });
 		this.fileWatcherService.start();
 	};
 
