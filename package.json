@@ -44,7 +44,7 @@
 	"license": "ISC",
 	"lint-staged": {
 		"*.ts": "rome check --apply-unsafe",
-		"*.{ts,json,yml,yaml,html,md}": "rome format --write"
+		"*.{ts,json}": "rome format --write"
 	},
 	"devDependencies": {
 		"@types/node": "18.x",
