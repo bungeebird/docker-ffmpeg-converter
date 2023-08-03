@@ -46,6 +46,10 @@ export class FileWatcherService extends EventEmitter {
 
 	private scan = async () => {
 		const files = await glob(this.patterns, { cwd: this.sourceDirectory });
+		this.logger.debug(`Found ${files.length} file${files.length !== 1 ? "s" : ""}`, {
+			sourceDirectory: this.sourceDirectory,
+			files,
+		});
 		files
 			.map((file) => join(this.sourceDirectory, file))
 			.forEach((file) => {
