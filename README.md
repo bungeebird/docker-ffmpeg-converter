@@ -21,7 +21,7 @@ Deploying docker-ffmpeg-converter is a breeze with Docker Compose. Below is an e
 version: "3.9"
 services: 
   video-converter:
-    image: xxx
+    image: ghcr.io/kennethwussmann/docker-ffmpeg-converter:latest
     volumes:
       # This is where we will add input files and get output files
       - ./data:/data
