@@ -24,5 +24,5 @@ jobs:
       - uses: ./.github/actions/docker-publish
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          tags: ghcr.io/kennethwussmann/docker-ffmpeg-converter/server:develop,ghcr.io/kennethwussmann/docker-ffmpeg-converter/server:${{ steps.git-commit.outputs.SHORT_SHA }}
+          tags: ghcr.io/kennethwussmann/docker-ffmpeg-converter:develop,ghcr.io/kennethwussmann/docker-ffmpeg-converter:${{ steps.git-commit.outputs.SHORT_SHA }}
           build-args: VERSION=${{ steps.git-commit.outputs.SHORT_SHA }}
