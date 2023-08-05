@@ -35,6 +35,8 @@ services:
 
 ### 🏷️ Tags
 
+This image is built for `arm64` and `amd64`.
+
 - `latest` - Latest stable release
 - `x.x.x` - Specific version under Semver ([See all versions](https://github.com/KennethWussmann/docker-ffmpeg-converter/pkgs/container/docker-ffmpeg-converter/versions))
 - `develop` - Unstable pre-release development version
