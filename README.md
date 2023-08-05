@@ -56,26 +56,26 @@ Configure the container through environment variables. Here's a breakdown of wha
   <tr>
     <td><code>GLOB_PATTERNS</code></td>
     <td>Yes</td>
-    <td>Comma-separated list of glob patterns the service will use to filter files in the `SOURCE_DIRECTORY_PATH`</td>
+    <td>Comma-separated list of glob patterns the service will use to filter files in the <code>SOURCE_DIRECTORY_PATH</code></td>
   </tr>
   <tr>
     <td><code>FFMPEG_ARGS</code></td>
     <td>Yes</td>
-    <td>Arguments for the ffmpeg binary that specify what to do. See <a href="https://ffmpeg.org/ffmpeg.html">ffmpeg docs</a>. You can use placeholders `%s`, see below.</td>
+    <td>Arguments for the ffmpeg binary that specify what to do. See <a href="https://ffmpeg.org/ffmpeg.html">ffmpeg docs</a>. You can use placeholders <code>%s</code>, see below.</td>
   </tr>
   <tr>
     <td><code>REMOVE_SOURCE_AFTER_CONVERT</code></td>
-    <td>No (default: false)</td>
-    <td>`true` or `false`. Whether or not to delete source files after successful conversion</td>
+    <td>No (default: <code>false</code>)</td>
+    <td><code>true</code> or <code>false</code>. Whether or not to delete source files after successful conversion</td>
   </tr>
   <tr>
     <td><code>SCAN_INTERVAL</code></td>
-    <td>No (default: 10)</td>
+    <td>No (default: <code>10</code>)</td>
     <td>Interval in seconds when the service will search for new files</td>
   </tr>
   <tr>
     <td><code>FILE_UNCHANGED_INTERVALS</code></td>
-    <td>No (default: 3)</td>
+    <td>No (default: <code>3</code>)</td>
     <td>How many cycles the service will wait for new files to stay unchanged until conversion starts. See below for detailed info.</td>
   </tr>
 </table>
