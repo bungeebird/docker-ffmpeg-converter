@@ -8,7 +8,7 @@ COPY . .
 RUN npm ci
 RUN npm run bundle
 
-FROM gcr.io/distroless/nodejs${NODE_VERSION}:debug
+FROM gcr.io/distroless/nodejs${NODE_VERSION}
 LABEL org.opencontainers.image.source https://github.com/KennethWussmann/docker-ffmpeg-converter
 
 WORKDIR /app

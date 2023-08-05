@@ -40,8 +40,8 @@
 		}
 	},
 	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"author": "Kenneth Wußmann",
+	"license": "GPL-3.0",
 	"lint-staged": {
 		"*.ts": "rome check --apply-unsafe",
 		"*.{ts,json}": "rome format --write"
