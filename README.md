@@ -33,6 +33,12 @@ services:
       - FFMPEG_ARGS=-y -fflags +genpts -i %s -r 24 %s.mp4
 ```
 
+### 🏷️ Tags
+
+- `latest` - Latest stable release
+- `x.x.x` - Specific version under Semver ([See all versions](https://github.com/KennethWussmann/docker-ffmpeg-converter/pkgs/container/docker-ffmpeg-converter/versions))
+- `develop` - Unstable pre-release development version
+
 ### 🔧 Configuration
 
 Configure the container through environment variables. Here's a breakdown of what you can customize:
