@@ -115,6 +115,41 @@ Resulting command:
 - **Scan Interval**: Adjust the polling frequency with `SCAN_INTERVAL`, defining the seconds between each search.
 - **File Unchanged Intervals**: Customize the number of cycles to wait for file size stability using `FILE_UNCHANGED_INTERVALS`.
 
+## 🔗 Pipeline example
+
+Here is a more complex example on how to use mulitple instances:
+
+```YAML
+version: "3.9"
+services: 
+  # Same as above
+  webm-to-mp4:
+    image: ghcr.io/kennethwussmann/docker-ffmpeg-converter:latest
+    volumes:
+      # This is where we will add input files and get output files
+      - ./data:/data
+    environment:
+      - SOURCE_DIRECTORY_PATH=/data/input
+      - DESTINATION_DIRECTORY_PATH=/data/output
+      - GLOB_PATTERNS=*.webm
+      # Convert *.webm files to .mp4
+      - FFMPEG_ARGS=-y -fflags +genpts -i %s -r 24 %s.mp4
+
+  # Another instance to take thumbnails from the *.webm files
+  webm-thumbnails:
+    image: ghcr.io/kennethwussmann/docker-ffmpeg-converter:latest
+    volumes:
+      - ./data:/data
+    environment:
+      - SOURCE_DIRECTORY_PATH=/data/input
+      - DESTINATION_DIRECTORY_PATH=/data/output
+      - GLOB_PATTERNS=*.webm
+      # Take multiple thumbnails from *.webm files
+      - FFMPEG_ARGS=-y -i %s -vf fps=1/4 %s_%04d.png
+```
+
+The output directory will then contain multiple thumbnails and a converted MP4 file of our source material. Because the containers run in parallel they finish quickly as both tasks can run simulatanously.
+
 ## 🎉 Conclusion
 docker-ffmpeg-converter is a great solution for seamless media conversion tasks, providing robust customization and a simplified deployment process. Experience the ease of automation with this powerful Docker service.
 
