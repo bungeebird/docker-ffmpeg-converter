@@ -16,7 +16,7 @@ const environmentVariables = z.object({
 		.default(3),
 	SOURCE_DIRECTORY_PATH: z.string(),
 	DESTINATION_DIRECTORY_PATH: z.string(),
-	REMOVE_DELAY: z
+	REMOVE_SOURCE_AFTER_CONVERT_DELAY: z
 		.string()
 		.transform((s) => parseInt(s, 10))
 		.default(0),
