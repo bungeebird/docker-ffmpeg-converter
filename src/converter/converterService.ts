@@ -47,7 +47,7 @@ export class ConverterService {
 
 			setTimeout(async () => {
 				await this.removeSourceFile(file);
-			}, this.removeDelay);
+			}, this.removeDelay * 1000);
 		} catch (error) {
 			this.logger.error("Failed to convert file", { file, error });
 		}
