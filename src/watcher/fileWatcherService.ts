@@ -71,16 +71,17 @@ export class FileWatcherService extends EventEmitter {
 					return counterparts.length > 0 ? join(this.sourceDirectory, counterparts[0]) : null;
 				};
 
-				const counterpart = getCounterpart();
-
 				if (tracker) {
-					if (this.counterpartPatterns && !counterpart) {
-						// counterpart is required but does not exist
+					if (tracker.consumed) {
+						// file was emitted once and is ignored from now on
 						return;
 					}
 
-					if (tracker.consumed) {
-						// file was emitted once and is ignored from now on
+					const counterpart = getCounterpart();
+
+					if (this.counterpartPatterns && !counterpart) {
+						// counterpart is required but does not exist
+						this.logger.debug(`No counterpart found for ${file}. Waiting...`);
 						return;
 					}
 
